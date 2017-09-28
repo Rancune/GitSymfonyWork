@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if liste is defined %}
+      <h1>  Voici la liste des commentaires de l'article {{idart}} sélectionné:</h1>
+
+
+        <thead>
+        <tr>
+
+          <td>Commentaire </td>
+          <td>auteur </td>
+
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for liste in liste %}
+            <tr>
+
+                <td>{{ liste.contenu}}</td>
+                <td><i>{{ article.auteur.pseudo }}</i></td>
+                <td>
+                    {% if article.actif == 1 %}
+                          <a href="{{path('commentaire_suppr', {'id': liste.id})}}" class='btn btn-danger btn-xs'> Désactiver</a> </td>
+                    {% else %}
+                          <a href="{{path('commentaire_active', {'id': liste.id})}}" class='btn btn-success btn-xs'> Activer</a> </td>
+                    {% endif %}
+                <td><a href="{{path('commentaire_modif', {'id': liste.id})}}" class='btn btn-warning btn-xs'> Modifier</a> </td>
+
+
+            </tr>
+            {% endfor %}
+
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+
+
+        <tbody>
+
+
+<a href="{{path('commentaire_nouveau', {'id': article.id}) }}" class='btn btn-primary'> Nouveau Commentaire </a>
+<a href="{{path('article_count')}}" class='btn btn-danger'> Annuler </a>
+{% endblock %}
+
+
+
+  {% block javascripts %}
+    {{ parent()}}
+    <script>
+    $('#modalVar').modal('show');
+    </script>
+
+  {% endblock %}

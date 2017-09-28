@@ -1,0 +1,95 @@
+body {
+  background-color: black;
+  margin:auto;
+}
+
+a{
+  text-decoration: none;
+}
+
+#content{
+  margin:auto;
+}
+
+
+
+
+#livre{
+  color: black;
+  background-color: white;
+  font-size: 2em;
+  font-family: 'Dancing Script', cursive;
+
+}
+
+#quote1{
+  color: white;
+  font-size: 2em;
+  font-family: 'Dancing Script', cursive;
+  border-top: 2px solid  white;
+  border-bottom: 2px solid  white;
+  text-align: right;
+  margin: 50px;
+
+}
+
+#quote2{
+  color: white;
+  font-size: 2em;
+  font-family: 'Dancing Script', cursive;
+  border-top: 2px solid  white;
+  border-bottom: 2px solid  white;
+}
+
+
+#newsletter{
+  color: white;
+  font-size: 2em;
+  font-family: 'Dancing Script', cursive;
+  border-top: 2px solid  white;
+  border-bottom: 2px solid  white;
+}
+
+
+#menufront{
+  color: white;
+  margin:auto;
+
+}
+
+#listeconcert{
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.actu{
+  position: relative;
+  top: -110px;
+  left: 120px;
+  font-size: 2em;
+  text-decoration: none;
+  margin:auto;
+}
+
+.video{
+  background-color: white;
+  margin: 10px;
+}
+
+.headimageconcert{
+  margin: auto;
+  height: 500px;
+}
+
+
+.expandcontent {
+
+  height: 20px;
+  overflow: hidden;
+}
+
+.table{
+  color: white;
+}

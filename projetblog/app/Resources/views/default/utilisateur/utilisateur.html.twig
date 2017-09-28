@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+
+  {% block body %}
+
+  <div class="modal fade" id="modalVar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Action Utilisateur </h4>
+        </div>
+        <div class="modal-body">
+          {% if user is defined %}
+
+          {{user}}
+
+          {% else %}
+          la variable test n'est pas défini.
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+
+
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+  <script>
+  $('#modalVar').modal('show');
+  </script>
+
+  {% endblock %}

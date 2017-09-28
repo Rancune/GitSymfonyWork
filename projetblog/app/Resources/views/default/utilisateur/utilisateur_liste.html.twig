@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if user is defined %}
+      <h1>  Voici la liste des utilisateurs: </h1>
+
+
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>User </th>
+          <th>Email </th>
+          <th>Actif </th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for user in user %}
+            <tr>
+
+                <td>{{ user.id }}</td>
+                <td>{{ user.pseudo }}</td>
+                <td>{{ user.email }}</td>
+                <td>{% if user.actif == 0 %} <i class="fa fa-circle" style="font-size:24px;color:red"></i> {% else %}<i class="fa fa-circle" style="font-size:24px;color:green"></i>{% endif %}</td>
+                <td>
+                    {% if user.actif == 1 %}
+                          <a href="{{path('utilisateur_suppr', {'id': user.id})}}" class='btn btn-danger btn-xs'> Désactiver</a> </td>
+                    {% else %}
+                          <a href="{{path('utilisateur_active', {'id': user.id})}}" class='btn btn-success btn-xs'> Activer</a> </td>
+                    {% endif %}
+                <td><a href="{{path('utilisateur_modif', {'id': user.id})}}" class='btn btn-warning btn-xs'> Modifier</a> </td>
+
+            </tr>
+            {% endfor %}
+
+        <div>
+                    <a href="{{path('utilisateur_nouveau')}}" class='btn btn-primary'> Ajouter un nouvel utilisateur </a>
+        </div>
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+  <script>
+  $('#modalVar').modal('show');
+  </script>
+
+  {% endblock %}

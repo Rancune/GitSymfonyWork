@@ -1,0 +1,67 @@
+{% extends '/default/base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if image is defined %}
+      <h1>  Voici la liste des adresses des images: </h1>
+
+
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>titre </th>
+          <th>adresse </th>
+          <th>Actif </th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for image in image %}
+            <tr>
+
+                <td>{{ image.id }}</td>
+                <td>{{ image.titre }}</td>
+                <td><img src="{{ asset('images/' ~ image.adresse) }}"></td>
+                <td>{{ image.actif }}</td>
+                <td>
+                    {% if image.actif == 1 %}
+                          <a href="{{path('image_suppr', {'id': image.id})}}" class='btn btn-danger btn-xs'> Désactiver</a> </td>
+                    {% else %}
+                          <a href="{{path('image_active', {'id': image.id})}}" class='btn btn-success btn-xs'> Activer</a> </td>
+                    {% endif %}
+                <td><a href="{{path('image_modif', {'id': image.id})}}" class='btn btn-warning btn-xs'> Modifier</a> </td>
+
+
+            </tr>
+            {% endfor %}
+
+        <div>
+                    <a href="{{path('image_nouveau')}}" class='btn btn-primary'> Ajouter un nouvel image </a>
+        </div>
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+  <script>
+  $('#modalVar').modal('show');
+  </script>
+
+  {% endblock %}

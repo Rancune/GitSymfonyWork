@@ -1,0 +1,67 @@
+{% extends '/default/base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if discographie is defined %}
+      <h1>  Liste des 33 Tours : </h1>
+
+
+        <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Date de Sortie</th>
+          <th>Actif</th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for discographie in discographie %}
+            <tr>
+
+
+                <td>{{ discographie.titre }}</td>
+                <td>{{ discographie.contenu }}</td>
+                <td>{{ discographie.discreleasedate|localizeddate('medium','none') }}</td>
+                <td>
+                    {% if discographie.actif == 1 %}
+                          <a href="{{path('discographie_suppr', {'id': discographie.id})}}" class='btn btn-danger btn-xs'> Désactiver</a> </td>
+                    {% else %}
+                          <a href="{{path('discographie_active', {'id': discographie.id})}}" class='btn btn-success btn-xs'> Activer</a> </td>
+                    {% endif %}
+                <td><a href="{{path('discographie_modif', {'id': discographie.id})}}" class='btn btn-warning btn-xs'> Modifier</a> </td>
+
+
+            </tr>
+            {% endfor %}
+
+        <div>
+                    <a href="{{path('discographie_nouveau')}}" class='btn btn-primary'> Ajouter un nouveau 33 Tours </a>
+        </div>
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+  <script>
+  $('#modalVar').modal('show');
+  </script>
+
+  {% endblock %}

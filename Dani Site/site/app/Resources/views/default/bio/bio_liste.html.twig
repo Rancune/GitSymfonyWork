@@ -1,0 +1,65 @@
+{% extends '/default/base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if bio is defined %}
+      <h1>  Liste des Bio  : </h1>
+
+
+        <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Biographie</th>
+          <th>Actif</th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for bio in bio %}
+            <tr>
+
+
+                <td>{{ bio.titre }}</td>
+                <td>{{ bio.contenu }}</td>
+                <td>
+                    {% if bio.actif == 1 %}
+                          <a href="{{path('bio_suppr', {'id': bio.id})}}" class='btn btn-danger btn-xs'> Désactiver</a> </td>
+                    {% else %}
+                          <a href="{{path('bio_active', {'id': bio.id})}}" class='btn btn-success btn-xs'> Activer</a> </td>
+                    {% endif %}
+                <td><a href="{{path('bio_modif', {'id': bio.id})}}" class='btn btn-warning btn-xs'> Modifier</a> </td>
+
+
+            </tr>
+            {% endfor %}
+
+        <div>
+                    <a href="{{path('bio_nouveau')}}" class='btn btn-primary'> Ajouter une nouvelle Bio </a> dans le cas extrement improbable où l'on se rendrait compte qu'elle est immortelle et qu'il faudrait lui faire deux bio.
+        </div>
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+  <script>
+  $('#modalVar').modal('show');
+  </script>
+
+  {% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if article is defined %}
+      <h1>  Mon Blog </h1>
+
+
+        <thead>
+        <tr>
+          <th>{{article.id}}</th>
+
+        </tr>
+        </thead>
+
+      <tbody>
+
+
+            <tr>
+
+                <td><h3>{{ article.titre }} </h3>
+                    <br />
+                    <br />
+                {{ article.contenu }}
+                    <br />
+                    <br />
+                    <a href="{{path('article_count')}}" class='btn btn-secondary'> Retour </a>
+                </td>
+                <td>
+<!-- ajouterr commentaire -->
+
+
+                </td>
+              {% for commentaire in commentaire %}
+                            <td>
+            <!-- liste des  commentaires -->
+                            {{commentaire.auteur}}
+                            <br />
+                            <br />
+                            {{commentaire.contenu}}
+                              
+                            </td>
+                {% endfor %}
+            </tr>
+
+
+        <div>
+
+        </div>
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+  <script>
+  $('#modalVar').modal('show');
+  </script>
+
+  {% endblock %}

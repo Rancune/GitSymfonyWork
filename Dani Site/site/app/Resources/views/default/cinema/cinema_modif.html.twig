@@ -1,0 +1,44 @@
+{% extends '/default/base.html.twig' %}
+
+{% block body %}
+    <h1>  Modification un super 8: </h1>
+<br><br>
+
+
+{% if form is defined%}
+{% dump(form)%}
+{% endif %}
+
+
+{{ form_start(form) }}
+
+{{ form_widget(form) }}
+
+<!--
+{#{ form_row(form.pseudo) }}
+
+<div>
+{{ form_label(form.pseudo) }}
+{{ form_error(form.pseudo) }}
+{{ form_widget(form.pseudo) }}
+
+
+<label for="form_pseudo">{{form.pseudo.label}#}</label>
+<ul>
+  <li> ce champ est requi.</li>
+</ul>
+<input type="text" id="form_pseudo" name="form[pseudo]"/>
+-->
+
+</div>
+
+
+
+<button class = "btn btn-success" type="submit">Modifier</button>
+<a href="{{path('cinema_count')}}" class='btn btn-danger'> Annuler </a>
+{{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>  Création utilisateur: </h1>
+<br><br>
+
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{% if donnee is defined%}
+{% dump(donnee)%}
+{% endif %}
+
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+
+<button class = "btn btn-success" type="submit">Créer</button>
+<a href="{{path('utilisateur_liste')}}" class='btn btn-danger'> Annuler </a>
+{{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if actu is defined %}
+      <h1>  Les actualités de DANI  </h1>
+
+
+        <thead>
+        <tr>
+          <th>Actualités</th>
+
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for actu in actu %}
+            <tr>
+
+                <td><h3>{{ actu.titre }} </h3>
+                    <h4>{{ actu.date|localizeddate('medium','none') }} </h3>
+                    <img src="{{ asset('images/' ~ actu.image.adresse) }}">
+                    <br />
+                    <br />
+                    <div class="expandcontent">{{ actu.contenu }}</div>
+                    <br />
+                    <br />
+                    <a href="" class='act'> Lire l'article </a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        <div>
+
+        </div>
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+</table>
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+
+{{ parent()}}
+
+
+  <script type="text/javascript">
+$(".act").click(function(){
+
+
+    var val = $(this).text();
+
+if (val == "Lire l'article") {
+    $("div").css('height', '200px');
+    $(this).text("fermer l'article");
+} else {
+    $("div").css('height', '20px');
+    $(this).text("Lire l'article");
+}
+    return false;
+  });
+</script>
+  {% endblock %}

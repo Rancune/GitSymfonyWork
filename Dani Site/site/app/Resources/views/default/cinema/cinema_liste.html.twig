@@ -1,0 +1,67 @@
+{% extends '/default/base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if cinema is defined %}
+      <h1>  Liste des super 8  : </h1>
+
+
+        <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Date de Sortie</th>
+          <th>Actif</th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for cinema in cinema %}
+            <tr>
+
+
+                <td>{{ cinema.titre }}</td>
+                <td>{{ cinema.contenu }}</td>
+                <td>{{ cinema.moviereleasedate|localizeddate('medium','none') }}</td>
+                <td>
+                    {% if cinema.actif == 1 %}
+                          <a href="{{path('cinema_suppr', {'id': cinema.id})}}" class='btn btn-danger btn-xs'> Désactiver</a> </td>
+                    {% else %}
+                          <a href="{{path('cinema_active', {'id': cinema.id})}}" class='btn btn-success btn-xs'> Activer</a> </td>
+                    {% endif %}
+                <td><a href="{{path('cinema_modif', {'id': cinema.id})}}" class='btn btn-warning btn-xs'> Modifier</a> </td>
+
+
+            </tr>
+            {% endfor %}
+
+        <div>
+                    <a href="{{path('cinema_nouveau')}}" class='btn btn-primary'> Ajouter un nouveau Super 8 </a>
+        </div>
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+  <script>
+  $('#modalVar').modal('show');
+  </script>
+
+  {% endblock %}

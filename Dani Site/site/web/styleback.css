@@ -1,0 +1,41 @@
+div#menuback ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    background-color: #2F4F4F;
+    height: 100%; /* Full height */
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+}
+
+div#menuback li a {
+    display: block;
+    color: AliceBlue;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Change the link color on hover */
+div#menuback li a:hover {
+    background-color: white;
+    color: black;
+    border-radius: none;
+}
+div#menuback .active {
+    background-color: white;
+    color: black;
+}
+
+
+div#menufront ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    background-color: black;
+    height: 100%; /* Full height */
+  /*  position: fixed;  Make it stick, even on scroll */
+  /*  overflow: auto;  Enable scrolling if the sidenav has too much content */
+}

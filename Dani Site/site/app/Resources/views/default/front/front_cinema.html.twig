@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if cinema is defined %}
+      <h1>  Les films de DANI  </h1>
+
+
+
+
+              <thead>
+              <tr>
+                <th>Titre</th>
+                <th>Synopsy</th>
+                <th>Date de sortie</th>
+              </tr>
+              </thead>
+
+            <tbody>
+
+                  {% for cinema in cinema %}
+                  <tr>
+
+                      <td>{{ cinema.titre }}</td>
+                      <td>{{ cinema.contenu }}</td>
+                      <td>{{ cinema.moviereleasedate|localizeddate('medium','none') }}</td>
+
+                  </tr>
+                  {% endfor %}
+
+
+
+              {% else %}
+              la variable test n'est pas défini.
+              {% endif %}
+
+              <tbody>
+</table>
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+
+
+  {% endblock %}

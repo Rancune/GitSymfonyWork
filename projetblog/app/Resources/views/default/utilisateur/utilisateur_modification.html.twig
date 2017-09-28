@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+      <h1>  Modifier un utilisateur : </h1>
+      <br><br>
+
+
+  {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+  {% if donnee is defined%}
+  {% dump(donnee)%}
+  {% endif %}
+
+
+  {{ form_start(form) }}
+  {{ form_widget(form) }}
+
+  <button class = "btn btn-success" type="submit">Modifier</button>
+  <a href="{{path('utilisateur_liste')}}" class='btn btn-danger'> Annuler </a>
+  {{ form_end(form) }}
+
+
+
+
+
+<!--
+      <form action="{{ path('utilisateur_nouveau')}}" method="post">
+          <div class="form-group">
+              <label> Pseudo</label>
+              <input class="form-control" name="pseudo" placeholder="Pseudo" value="testmodif">
+          </div>
+
+          <div class="form-group">
+              <label> Email</label>
+              <input type="email" class="form-control" name="email" placeholder="Email">
+          </div>
+
+          <div class="form-group">
+              <label> MDP</label>
+              <input type="password" class="form-control" name="passe" placeholder="MDP">
+          </div>
+
+          <div class="form-group">
+              <label> MDP Confirme</label>
+              <input type="password" class="form-control" name="passe_confirme" placeholder="MDP Confirme">
+          </div>
+
+          <button type="submit" class="btn btn-primary" name="submit">Modifier</button>
+            <a href="{{path('utilisateur_liste')}}" class='btn btn-danger'> Annuler </a>
+      </form>
+-->
+
+{% endblock %}
+
+
+
+  {% block javascripts %}
+    {{ parent()}}
+
+
+  {% endblock %}

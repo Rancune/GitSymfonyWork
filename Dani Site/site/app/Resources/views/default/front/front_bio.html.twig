@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+  <div class="row">
+      <div class="col-sm-4" >
+        <a href="{{path('cinema')}}"><img src="{{asset('images/cinema.png')}}" class="img-responsive" ></a>
+      </div>
+
+
+        <div class="col-sm-4">
+          <a href="{{path('discographie')}}">  <img src="{{asset('images/audio.png')}}" class="img-responsive" ></a>
+
+        </div>
+
+        <div class="col-sm-4" >
+
+          <a href="{{path('homepage')}}"><img src="{{asset('images/dani.png')}}" class="img-responsive"></a>
+        </div>
+  </div>
+
+
+
+
+  <table class="table">
+        {% if bio is defined %}
+      <h1>  Biographie </h1>
+
+
+        <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Biographie</th>
+
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for bio in bio %}
+            <tr>
+
+
+                <td>{{ bio.titre }}</td>
+                <td>{{ bio.contenu }}</td>
+
+            </tr>
+            {% endfor %}
+
+
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+</table>
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+
+
+  {% endblock %}

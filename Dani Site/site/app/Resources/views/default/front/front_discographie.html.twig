@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if discographie is defined %}
+      <h1>  Les 33 tours de  DANI  </h1>
+
+
+
+
+              <thead>
+              <tr>
+                <th>Titre</th>
+                <th>Pistes</th>
+                <th>Date de sortie</th>
+              </tr>
+              </thead>
+
+            <tbody>
+
+                  {% for discographie in discographie %}
+                  <tr>
+
+                      <td>{{ discographie.titre }}</td>
+                      <td>{{ discographie.contenu }}</td>
+                      <td>{{ discographie.discreleasedate|localizeddate('medium','none') }}</td>
+
+                  </tr>
+                  {% endfor %}
+
+
+
+              {% else %}
+              la variable test n'est pas défini.
+              {% endif %}
+
+              <tbody>
+</table>
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+
+
+  {% endblock %}

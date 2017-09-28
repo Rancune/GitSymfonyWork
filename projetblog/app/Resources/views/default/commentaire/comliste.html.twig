@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if liste is defined %}
+      <h1>  Voici la liste de tous les commentaires :</h1>
+
+
+        <thead>
+        <tr>
+
+          <th>Titre article</th>
+          <th>Commentaire </th>
+          <th>auteur </th>
+          <th>Suppression </th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for liste in liste %}
+            <tr>
+
+                <td>{% if loop.index == 1 %}{% set test = liste.article.titre %}{{ liste.article.titre }} {% elseif test == liste.article.titre %} - {% else %} {{liste.article.titre}}{% set test = liste.article.titre %} {% endif %}</td>
+                <td>{{ loop.index }} - {{ liste.contenu}}</td>
+                <td><i>{{ loop.index }} - {{ liste.auteur.pseudo }}</i></td>
+                <td><a href="{{path('commentaire_suppr', {'id': liste.id})}}" class='btn btn-danger btn-xs'> Supprimer</a> </td>
+
+            </tr>
+            {% endfor %}
+
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+      <tbody>
+
+
+
+{% endblock %}
+
+
+
+  {% block javascripts %}
+    {{ parent()}}
+
+
+  {% endblock %}

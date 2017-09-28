@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if article is defined %}
+      <h1>  Voici la liste des articles: </h1>
+
+
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom </th>
+          <th>Auteur </th>
+
+          <th>Actif </th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for article in article %}
+            <tr>
+
+                <td>{{ article.id }}</td>
+                <td>{{ article.titre }}</td>
+                <td>{{ article.auteur.pseudo }}</td>
+
+                <td>{{ article.actif }}</td>
+                <td>
+                    {% if article.actif == 1 %}
+                          <a href="{{path('article_suppr', {'id': article.id})}}" class='btn btn-danger btn-xs'> Désactiver</a> </td>
+                    {% else %}
+                          <a href="{{path('article_active', {'id': article.id})}}" class='btn btn-success btn-xs'> Activer</a> </td>
+                    {% endif %}
+                <td><a href="{{path('article_modif', {'id': article.id})}}" class='btn btn-warning btn-xs'> Modifier</a> </td>
+                <td><a href="{{path('commentaire_liste', {'idart': article.id})}}" class='btn btn-info btn-xs'> Commentaire(s)</a> </td>
+
+            </tr>
+            {% endfor %}
+
+        <div>
+                    <a href="{{path('article_nouveau')}}" class='btn btn-primary'> Ajouter un nouvel article </a>
+        </div>
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+  <script>
+  $('#modalVar').modal('show');
+  </script>
+
+  {% endblock %}

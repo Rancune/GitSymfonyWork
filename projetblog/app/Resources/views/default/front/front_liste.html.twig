@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if liste is defined %}
+      <h1>  Mon Blog </h1>
+
+
+        <thead>
+        <tr>
+          <th>Les articles</th>
+
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for liste in liste %}
+            <tr>
+
+                <td><h3>{{ liste.titre }} </h3>
+                    <br />
+                    <br />
+                {{ liste.contenu }}
+                    <br />
+                    <br />
+                    <a href="{{path('article_id', {'id':liste.id})}}" class='btn btn-secondary'> Lire l'article </a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        <div>
+
+        </div>
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+  <script>
+  $('#modalVar').modal('show');
+  </script>
+
+  {% endblock %}

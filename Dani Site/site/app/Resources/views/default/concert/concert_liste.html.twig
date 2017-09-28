@@ -1,0 +1,67 @@
+{% extends '/default/base.html.twig' %}
+
+
+{% block body %}
+
+
+  <table class="table">
+        {% if concert is defined %}
+      <h1>  Liste des Concerts: </h1>
+
+
+        <thead>
+        <tr>
+          <th>date</th>
+          <th>Ville</th>
+          <th>salle</th>
+          <th>Actif</th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+            {% for concert in concert %}
+            <tr>
+
+                <td>{{ concert.date|localizeddate('medium','none') }}</td>
+                <td>{{ concert.ville }}</td>
+                <td>{{ concert.salle }}</td>
+                <td>{{ concert.actif }}</td>
+                <td>
+                    {% if concert.actif == 1 %}
+                          <a href="{{path('concert_suppr', {'id': concert.id})}}" class='btn btn-danger btn-xs'> Désactiver</a> </td>
+                    {% else %}
+                          <a href="{{path('concert_active', {'id': concert.id})}}" class='btn btn-success btn-xs'> Activer</a> </td>
+                    {% endif %}
+                <td><a href="{{path('concert_modif', {'id': concert.id})}}" class='btn btn-warning btn-xs'> Modifier</a> </td>
+
+
+            </tr>
+            {% endfor %}
+
+        <div>
+                    <a href="{{path('concert_nouveau')}}" class='btn btn-primary'> Ajouter un nouveau concert </a>
+        </div>
+
+        {% else %}
+        la variable test n'est pas défini.
+        {% endif %}
+
+        <tbody>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+  <script>
+  $('#modalVar').modal('show');
+  </script>
+
+  {% endblock %}

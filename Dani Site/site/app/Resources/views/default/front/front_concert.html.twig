@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+<div class="container" id="menu">
+
+
+            <div class="row" id="menufront">
+                  <div class="col-sm-6 hidden-sm-down" ></div>
+                  <div class="col-sm-1 hidden-sm-down" ><a href="{{path('dani')}}">DANI</a></div>
+                  <div class="col-sm-1 hidden-sm-down" ><a href="{{path('actualite')}}">ACTU</a></div>
+                  <div class="col-sm-1 hidden-sm-down" ><a href="{{path('concert')}}">CONCERT</a></div>
+                  <div class="col-sm-1 hidden-sm-down" ><a href="">GALERIE</a></div>
+                  <div class="col-sm-1 hidden-sm-down" ><a href="{{path('backoffice')}}">BACK OFFICE</a></div>
+            </div>
+</div>
+
+
+
+<div class="container" id="headimageconcert">
+      <div class="row">
+          <div class="hidden-sm-down col-sm-12 align-self-center justify-content-center" >
+            <img src="{{asset('images/710.jpg')}}" class="img-responsive">
+          </div>
+
+      </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container" id="listeconcert">
+
+  <table class="table">
+        {% if concert is defined %}
+      <h1>  Les Concerts de DANI  </h1>
+
+              <thead>
+              <tr>
+                <th>date</th>
+                <th>Ville</th>
+                <th>salle</th>
+              </tr>
+              </thead>
+
+            <tbody>
+
+                  {% for concert in concert %}
+                  <tr>
+
+                      <td>{{ concert.date|localizeddate('medium','none') }}</td>
+                      <td>{{ concert.ville }}</td>
+                      <td>{{ concert.salle }}</td>
+
+                  </tr>
+                  {% endfor %}
+
+              {% else %}
+              la variable test n'est pas défini.
+              {% endif %}
+
+              <tbody>
+
+              </table>
+
+</div>
+
+
+
+
+
+
+    <div class="container" id="footerimage">
+          <div class="row">
+              <div class="hidden-sm-down col-sm-12" >
+                <img src="{{asset('images/footer-img.png')}}" class="img-responsive">
+              </div>
+
+          </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+  {% block javascripts %}
+{{ parent()}}
+
+  {% endblock %}
+
+  {% block stylesheets %}
+
+  {{ parent()}}
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  {% endblock %}
